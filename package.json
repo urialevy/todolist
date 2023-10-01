@@ -1,6 +1,5 @@
 {
   "name": "todolist",
-  "mode": "development",
   "version": "1.0.0",
   "description": "A to do list for the Odin Project",
   "main": "index.js",
