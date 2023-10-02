@@ -36,6 +36,7 @@ The to-do list will exist of two different kind of entries:
 1. `complete` button.
 1. `collapse` button which displays only the title in the DOM
 1. `expand` button which reveals the full task in the DOM
+1. `tag` button which will let the user add specific tags (no spaces, hyphens are fine) to the object.
 
 `project`s will have the following properties:
 
@@ -53,3 +54,16 @@ The to-do list will exist of two different kind of entries:
         - a `project` is a child `project` item. It's projects all the way down.
 1. `collapse` button which displays only the title in the DOM
 1. `expand` button which reveals the full project in the DOM
+1. `tag` button which will let the user add specific tags (no spaces, hyphens are fine) to the object.
+
+# Mutability of the DOM by the user:
+
+1. The user should be able to drag objects around the DOM
+1. The DOM should be able to automatically sort objects based on the following qualities:
+    - Due date
+    - Priority
+    - Alphabetical order
+    * When displaying these qualities, the selected ordering by the user takes precedence, but the default display order is `priority` > `dueDate` > `alphabetical`.
+1. Ability to filter based on whether an object is overdue
+1. Ability to filter objects based on their `priority`
+1. Ability to filter objects based on `tag`s.
