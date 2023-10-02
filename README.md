@@ -2,7 +2,7 @@
 A to do list for the Odin Project
 
 
-Basic design ideas: 
+# Basic design ideas: 
 
 The to-do list will exist of two different kind of entries:
 
@@ -24,7 +24,7 @@ The to-do list will exist of two different kind of entries:
         - Perhaps marking a project as done will automatically mark all of its children as done? A consideration for ease of usability.
     1. Projects can be deleted without marking them as complete. Irreversible.
 
-Shared qualities of projects and individual tasks:
+# Specific qualities of projects and individual tasks:
 
 `task`s will have the following properties:
 
