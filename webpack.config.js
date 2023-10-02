@@ -10,7 +10,7 @@ devtool: 'inline-source-map',
       },
     plugins: [
         new HtmlWebpackPlugin({
-        title: 'Output Management',
+        title: 'Todo List',
     }),
   ],
     module: {
