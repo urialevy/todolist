@@ -64,6 +64,7 @@ The to-do list will exist of two different kind of entries:
     - Priority
     - Alphabetical order
     * When displaying these qualities, the selected ordering by the user takes precedence, but the default display order is `priority` > `dueDate` > `alphabetical`.
-1. Ability to filter based on whether an object is overdue
+1. Ability to filter object based on whether it's overdue
 1. Ability to filter objects based on their `priority`
 1. Ability to filter objects based on `tag`s.
+1. Ability to filter obejcts based on whether they're completed.
