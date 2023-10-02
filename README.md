@@ -1,8 +1,8 @@
-### todolist
+# todolist
 A to do list for the Odin Project
 
 
-# Basic design ideas: 
+### Basic design ideas: 
 
 The to-do list will exist of two different kind of entries:
 
@@ -24,7 +24,7 @@ The to-do list will exist of two different kind of entries:
         - Perhaps marking a project as done will automatically mark all of its children as done? A consideration for ease of usability.
     1. Projects can be deleted without marking them as complete. Irreversible.
 
-# Specific qualities of projects and individual tasks:
+### Specific qualities of projects and individual tasks:
 
 `task`s will have the following properties:
 
@@ -56,7 +56,7 @@ The to-do list will exist of two different kind of entries:
 1. `expand` button which reveals the full project in the DOM
 1. `tag` button which will let the user add specific tags (no spaces, hyphens are fine) to the object.
 
-# Mutability of the DOM by the user:
+### Mutability of the DOM by the user:
 
 1. The user should be able to drag objects around the DOM
 1. The DOM should be able to automatically sort objects based on the following qualities:
