@@ -6,12 +6,12 @@ A to do list for the Odin Project
 
 The to-do list will exist of two different kind of entries:
 
-1. Tasks
+1. `task`s
     1. They will have optional due dates that can be edited in the DOM
     1. They can be flagged as 'done' which will remove them from the DOM
         - I will need to create a way for the user to switch their view between items marked as done and due or overdue items.
-    1. Two types of tasks: `note` and `checkList-item`.
-    1. Tasks can be deleted without marking them as complete. Irreversible.
+    1. Two types of `task`s: `note` and `checkList-item`.
+    1. `task`s can be deleted without marking them as complete. Irreversible.
 
 
 
