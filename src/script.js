@@ -1,7 +1,7 @@
 import css from "./style.css"
 import frame from "./frame"
-function appendNode(node) {
-    document.body.appendChild(node)
-}
+import appendNode from "./appendNodeToBody"
+
+
 
 appendNode(frame())
