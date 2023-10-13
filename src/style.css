@@ -1,3 +1,35 @@
 body {
    font-family: Arial, Helvetica, sans-serif; 
 }
+
+#container, #main, #header, #footer {
+    display: flex;
+    width: 100%; 
+}
+
+#container {
+    flex-direction: column;
+    height: 90vh;
+    width: 70vw;
+    align-items: center;
+}
+
+
+
+#header {
+    color: #e7eaf6;
+    background-color: #113f67;
+    height: 10%;
+}
+
+#footer {
+    color: #38598b;
+    background-color: #a2a8d3;
+    height: 10%;
+}
+
+#main {
+    color: #113f67;
+    background-color: #e7eaf6;
+    height: 80%;
+}
