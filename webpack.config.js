@@ -18,9 +18,6 @@ devtool: 'inline-source-map',
       {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
-        options: {
-          import: true
-        },
       },
     ],
   },
