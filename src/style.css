@@ -22,6 +22,10 @@ body {
     color: #e7eaf6;
     background-color: #113f67;
     height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #footer {
