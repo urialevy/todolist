@@ -13,8 +13,6 @@ The to-do list will exist of two different kind of entries:
     1. Two types of `task`s: `note` and `checkList-item`.
     1. `task`s can be deleted without marking them as complete. Irreversible.
 
-
-
 1. Projects
     1. These will have optional due dates
     1. Projects can be composed of sub-projects OR of sub-tasks; 
@@ -31,19 +29,16 @@ The to-do list will exist of two different kind of entries:
 1. Title
 1. Description (optional)
 1. Due date (optional)
-1. Priority (optional)
 1. `del` button
 1. `complete` button.
 1. `collapse` button which displays only the title in the DOM
 1. `expand` button which reveals the full task in the DOM
-1. `tag` button which will let the user add specific tags (no spaces, hyphens are fine) to the object.
 
 `project`s will have the following properties:
 
 1. Title
 1. Description (optional)
 1. Due date (optional)
-1. Priority (optional)
 1. `del` button
 1. `complete` button.
 1. `addChild` button
@@ -54,17 +49,10 @@ The to-do list will exist of two different kind of entries:
         - a `project` is a child `project` item. It's projects all the way down.
 1. `collapse` button which displays only the title in the DOM
 1. `expand` button which reveals the full project in the DOM
-1. `tag` button which will let the user add specific tags (no spaces, hyphens are fine) to the object.
+
 
 ### Mutability of the DOM by the user:
 
 1. The user should be able to drag objects around the DOM
-1. The DOM should be able to automatically sort objects based on the following qualities:
-    - Due date
-    - Priority
-    - Alphabetical order
-    * When displaying these qualities, the selected ordering by the user takes precedence, but the default display order is `priority` > `dueDate` > `alphabetical`.
 1. Ability to filter object based on whether it's overdue
-1. Ability to filter objects based on their `priority`
-1. Ability to filter objects based on `tag`s.
 1. Ability to filter obejcts based on whether they're completed.
