@@ -35,7 +35,31 @@ body {
 }
 
 #main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     color: #113f67;
     background-color: #e7eaf6;
     height: 80%;
+}
+
+#newTask {
+    padding: 10px 25px;
+    font-weight: 500;
+    background: transparent;
+    outline: none !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    border: 2px solid #113f67;
+    z-index: 1;
+    color: #113f67;
+    border-radius: 80%;
+}
+
+#newTask:hover {
+    color: #e7eaf6;
+    background-color: #113f67;
 }
