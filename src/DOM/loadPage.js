@@ -1,5 +1,3 @@
-import {button} from 'antd'
-
 export function framework() {
     const divFrame = document.createElement('div')
     divFrame.id = "container"
