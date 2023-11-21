@@ -1,3 +1,5 @@
+import {button} from 'antd'
+
 export function framework() {
     const divFrame = document.createElement('div')
     divFrame.id = "container"
@@ -16,10 +18,10 @@ export function framework() {
                     <div class="task">1</div>
                     <div class="task">2</div>  
                     <div class="task">3</div>
-                </div>
             </div>
             </div>
-    <div id=footer></div>`;
+            </div>
+    <div id="footer"><div class="text-red-700"><p class="text-red-700">LOREM IPSUM!</p></div></div>`;
     return divFrame
 }
 export function appendNodeToBody(node) {
