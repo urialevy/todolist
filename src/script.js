@@ -7,6 +7,12 @@ import { Project } from "./DATA/projects"
 import { Descriptions } from "antd"
 
 appendNodeToBody(framework())
-const projONe = new Project('testProj',"Description","12.31.2023")
-projONe.addTask("testTask")
-console.log(projONe)
+const projOne = new Project('testProj',"Description","12.31.2023")
+projOne.addTask("testTask")
+console.log(projOne)
+
+const taskOne = new Task ('testTask',"","")
+const projTwo = new Project("test two", "","")
+
+projTwo.addTask(taskOne)
+console.log(projTwo)
