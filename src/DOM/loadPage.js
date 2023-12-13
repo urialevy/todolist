@@ -1,7 +1,7 @@
 import { Project } from "../DATA/projects";
 import { Task } from "../DATA/tasks";
 import { placeHolder } from "../DATA/projects";
-
+import { projOne } from "../DATA/projects";
 export function framework() {
   const divFrame = document.createElement("div");
   divFrame.id = "container";
@@ -15,9 +15,6 @@ export function framework() {
             <div id="mainright">
                 <div id="taskTitle"><h2>Tasks</h2></div>
                 <div id="tasksList">
-                    <div class="task">1</div>
-                    <div class="task">2</div>  
-                    <div class="task">3</div>
             </div>
             </div>
             </div>
@@ -46,4 +43,21 @@ export const injectProjHtml = (titlesArray) => {
     projectNodeArr.push(divNode);
     projectNodeArr[i].innerHTML = `${titlesArray[i]}`;
   }
+};
+
+export const injectTaskHtml = (projArray, index) => {
+  let taskNode = document.querySelector("#tasksList");
+  console.log("task list div");
+  console.log(taskNode);
+  console.log(`project tasks`);
+  console.log(projArray[index].tasksList);
+  let taskArr = [];
+  for (let i = 0; i < projArray[index].tasksList.length; i++) {
+    let divNode = document.createElement("div");
+    divNode.classList.add("task");
+    taskNode.appendChild(divNode);
+    taskArr.push(divNode);
+    taskArr[i].innerHTML = `${projArray[index].tasksList[i]}`;
+  }
+  console.log(taskArr);
 };

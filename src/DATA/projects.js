@@ -16,12 +16,13 @@ export class Project {
   }
 }
 
+export const projOne = new Project("Project 1", "Description", "12.31.2023");
+export const projTwo = new Project("Project 2", "Some description", "");
+projOne.addTask("task 1 for proj 1");
+projOne.addTask("task 2 for proj 1");
+projTwo.addTask("Task 1 for proj 2");
+
 export const placeHolder = () => {
-  const projOne = new Project("Project 1", "Description", "12.31.2023");
-  projOne.addTask("task 1 for proj 1");
-  projOne.addTask("task 2 for proj 1");
-  const projTwo = new Project("Project 2", "Some description", "");
-  projTwo.addTask("Task 1 for proj 2");
   let projectArr = [];
   projectArr.push(projOne);
   projectArr.push(projTwo);
