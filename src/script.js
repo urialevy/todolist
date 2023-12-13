@@ -1,18 +1,16 @@
-import  "./style.css"
-import { framework } from "./DOM/loadPage"
-import { appendNodeToBody } from "./DOM/loadPage"
-import { compareAsc, format } from 'date-fns'
-import { Task } from "./DATA/tasks"
-import { Project } from "./DATA/projects"
-import { Descriptions } from "antd"
+import "./style.css";
+import { framework, projOne } from "./DOM/loadPage";
+import { appendNodeToBody } from "./DOM/loadPage";
+import { compareAsc, format } from "date-fns";
+import { Task } from "./DATA/tasks";
+import { Project } from "./DATA/projects";
+import { Descriptions } from "antd";
+import { injectProjHtml } from "./DOM/loadPage";
+import { placeHolder } from "./DATA/projects";
+import { getProjTitles } from "./DOM/loadPage";
 
-appendNodeToBody(framework())
-const projOne = new Project('testProj',"Description","12.31.2023")
-projOne.addTask("testTask")
-console.log(projOne)
+appendNodeToBody(framework());
 
-const taskOne = new Task ('testTask',"","")
-const projTwo = new Project("test two", "","")
-
-projTwo.addTask(taskOne)
-console.log(projTwo)
+console.log("Hello world");
+console.log(getProjTitles(placeHolder()));
+injectProjHtml(getProjTitles(placeHolder()));
