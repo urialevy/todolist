@@ -63,13 +63,12 @@ export const addListeners = () => {
   let nodeList = document.querySelectorAll('.project')
   console.log(nodeList);
 
-  // add an event listener to each one of them
+  // add an event listener to each one of them, they adjust the DOM to show the correct project's display
   for (let i = 0; i < nodeList.length; i++) {
     nodeList[i].addEventListener('click', function(e) {
       e.preventDefault()
       injectTaskHtml(placeHolder(), i);
     })
   }
-  // this event will adjust the DOM to show the correct project's display
 }
  
