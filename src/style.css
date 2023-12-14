@@ -41,7 +41,7 @@ body {
   width: 100%;
 }
 
-#newTask, .project {
+#newTask, .project, #delTask, #finishTask {
   margin-bottom: 2rem;
   padding: 10px 25px;
   background: transparent;
@@ -57,7 +57,7 @@ body {
   border-radius: 5%;
 }
 
-#newTask:hover, .project:hover {
+#newTask:hover, .project:hover, #delTask:hover, #finishTask:hover {
   color: #113f67;
   background-color: #e7eaf6;
   border-color: #e7eaf6;
@@ -104,7 +104,9 @@ body {
 }
 
 .task {
-  border: solid black;
+  background-color: #113f67;
+  color: #e7eaf6;
+  border-radius: 5%;
   padding: 10px 25px;
   margin: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
