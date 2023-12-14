@@ -41,7 +41,7 @@ body {
   width: 100%;
 }
 
-#newTask, .project, #delTask, #finishTask {
+#newTask, .project, #delTask, #finishTask, #addTask {
   margin-bottom: 2rem;
   padding: 10px 25px;
   background: transparent;
@@ -62,6 +62,13 @@ body {
   background-color: #e7eaf6;
   border-color: #e7eaf6;
 }
+
+#addTask:hover{
+  cursor: grab;
+  background-color: #a2a8d3;
+  border-color: #a2a8d3;
+}
+
 #delTask:hover {
   background-color: red;
 }
@@ -155,7 +162,8 @@ body {
 
 #taskTitle {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-evenly
 }
 
 #tasksContainer {

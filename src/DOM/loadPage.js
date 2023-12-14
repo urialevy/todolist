@@ -16,7 +16,7 @@ export function framework() {
             <button id="delTask"><h2>❌ Delete Project</h2></button>
             <button id="finishTask"><h2>✔ Complete Project</h2></button></div></div>
             <div id="mainright">
-                <div id="taskTitle"><h2>Tasks</h2></div>
+                <div id="taskTitle"><div><h2>Tasks</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div></div>
                 <div id="tasksContainer">
                 <div id="tasksList">
             </div></div>
