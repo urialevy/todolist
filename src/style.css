@@ -41,7 +41,7 @@ body {
   width: 100%;
 }
 
-#newTask {
+#newTask, .project {
   margin-bottom: 2rem;
   padding: 10px 25px;
   background: transparent;
@@ -57,7 +57,7 @@ body {
   border-radius: 5%;
 }
 
-#newTask:hover {
+#newTask:hover, .project:hover {
   color: #113f67;
   background-color: #e7eaf6;
   border-color: #e7eaf6;
@@ -87,8 +87,19 @@ body {
 }
 
 .project {
-  border: solid black;
+  margin-bottom: 2rem;
   padding: 10px 25px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid #113f67;
+  z-index: 1;
+  color: #e7eaf6;
+  background-color: #113f67;
+  border-radius: 5%;
   margin: 1rem 1rem 1rem 1rem;
 }
 
