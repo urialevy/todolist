@@ -47,10 +47,6 @@ export const injectProjHtml = (titlesArray) => {
 
 export const injectTaskHtml = (projArray, index) => {
   let taskNode = document.querySelector("#tasksList");
-  console.log("task list div");
-  console.log(taskNode);
-  console.log(`project tasks`);
-  console.log(projArray[index].tasksList);
   let taskArr = [];
   for (let i = 0; i < projArray[index].tasksList.length; i++) {
     let divNode = document.createElement("div");
@@ -59,5 +55,4 @@ export const injectTaskHtml = (projArray, index) => {
     taskArr.push(divNode);
     taskArr[i].innerHTML = `${projArray[index].tasksList[i]}`;
   }
-  console.log(taskArr);
 };
