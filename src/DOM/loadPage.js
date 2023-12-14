@@ -12,14 +12,14 @@ export function framework() {
             <div id="projectTitle"><h1>Projects</h1></div>
             <div id="projectsList">
             </div>
-            <div><button id="newTask"><h2>+ Add Project</h2></button>
+            <div id="projectNav"><button id="newTask"><h2>+ Add Project</h2></button>
             <button id="delTask"><h2>❌ Delete Project</h2></button>
             <button id="finishTask"><h2>✔ Complete Project</h2></button></div></div>
             <div id="mainright">
                 <div id="taskTitle"><h2>Tasks</h2></div>
                 <div id="tasksContainer">
                 <div id="tasksList">
-            </div><div id="manCol"><button class ="delbtn">❌</button><button class="completebtn">✔</button></div></div>
+            </div></div>
             </div>
             </div>
     <div id="footer"><div class="text-red-700"><p class="text-red-700">LOREM IPSUM!</p></div></div>`;
@@ -57,10 +57,10 @@ export const injectTaskHtml = (projArray, index) => {
     divNode.classList.add("task");
     taskNode.appendChild(divNode);
     taskArr.push(divNode);
-    taskArr[i].innerHTML = `${projArray[index].tasksList[i]}`;
+    taskArr[i].innerHTML = `${projArray[index].tasksList[i]} <div class="taskMan"><button class ="delbtn">🗑️</button><button class="completebtn">✔</button><button class="editbtn">🖊️</button></div>`;
   }
-  // return taskArr
 };
+
 export const navigateProjects = () => {
   // get an array of the existing node list
   let nodeList = document.querySelectorAll('.project')
