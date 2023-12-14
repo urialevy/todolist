@@ -12,11 +12,14 @@ export function framework() {
             <div id="projectTitle"><h1>Projects</h1></div>
             <div id="projectsList">
             </div>
-            <div><button id="newTask"><h2>+ Add Project</h2></button></div></div>
+            <div><button id="newTask"><h2>+ Add Project</h2></button>
+            <button id="delTask"><h2>❌ Delete Project</h2></button>
+            <button id="finishTask"><h2>✔ Complete Project</h2></button></div></div>
             <div id="mainright">
                 <div id="taskTitle"><h2>Tasks</h2></div>
+                <div id="tasksContainer">
                 <div id="tasksList">
-            </div>
+            </div><div id="manCol"><button class ="delbtn">❌</button><button class="completebtn">✔</button></div></div>
             </div>
             </div>
     <div id="footer"><div class="text-red-700"><p class="text-red-700">LOREM IPSUM!</p></div></div>`;
@@ -58,11 +61,9 @@ export const injectTaskHtml = (projArray, index) => {
   }
   // return taskArr
 };
-export const addListeners = () => {
+export const navigateProjects = () => {
   // get an array of the existing node list
   let nodeList = document.querySelectorAll('.project')
-  console.log(nodeList);
-
   // add an event listener to each one of them, they adjust the DOM to show the correct project's display
   for (let i = 0; i < nodeList.length; i++) {
     nodeList[i].addEventListener('click', function(e) {
