@@ -2,6 +2,7 @@ import { Project } from "../DATA/projects";
 import { Task } from "../DATA/tasks";
 import { placeHolder } from "../DATA/projects";
 import { projOne } from "../DATA/projects";
+
 export function framework() {
   const divFrame = document.createElement("div");
   divFrame.id = "container";
@@ -30,7 +31,6 @@ export const getProjTitles = (arr) => {
     titlesArr.push(element.title);
   });
   return titlesArr;
-  console.log(titlesArr);
 };
 
 export const injectProjHtml = (titlesArray) => {
@@ -48,6 +48,7 @@ export const injectProjHtml = (titlesArray) => {
 export const injectTaskHtml = (projArray, index) => {
   let taskNode = document.querySelector("#tasksList");
   let taskArr = [];
+  taskNode.innerHTML = ``
   for (let i = 0; i < projArray[index].tasksList.length; i++) {
     let divNode = document.createElement("div");
     divNode.classList.add("task");
@@ -55,4 +56,20 @@ export const injectTaskHtml = (projArray, index) => {
     taskArr.push(divNode);
     taskArr[i].innerHTML = `${projArray[index].tasksList[i]}`;
   }
+  return taskArr
 };
+export const addListeners = () => {
+  // get an array of the existing node list
+  let nodeList = document.querySelectorAll('.project')
+  console.log(nodeList);
+
+  // add an event listener to each one of them
+  for (let i = 0; i < nodeList.length; i++) {
+    nodeList[i].addEventListener('click', function(e) {
+      e.preventDefault()
+      injectTaskHtml(placeHolder(), i);
+    })
+  }
+  // this event will adjust the DOM to show the correct project's display
+}
+ 
