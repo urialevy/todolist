@@ -8,9 +8,12 @@ import { injectProjHtml } from "./DOM/loadPage";
 import { placeHolder } from "./DATA/projects";
 import { getProjTitles } from "./DOM/loadPage";
 import { injectTaskHtml } from "./DOM/loadPage";
-import { addListeners } from "./DOM/loadPage";
+import { navigateProjects } from "./DOM/loadPage";
+import { addTask } from "./DOM/newProject";
+
 
 appendNodeToBody(framework());
 injectProjHtml(getProjTitles(placeHolder()));
 injectTaskHtml(placeHolder(), 0);
-addListeners()
+navigateProjects()
+addTask()
