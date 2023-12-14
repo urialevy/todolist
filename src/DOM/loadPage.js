@@ -56,7 +56,7 @@ export const injectTaskHtml = (projArray, index) => {
     taskArr.push(divNode);
     taskArr[i].innerHTML = `${projArray[index].tasksList[i]}`;
   }
-  return taskArr
+  // return taskArr
 };
 export const addListeners = () => {
   // get an array of the existing node list
