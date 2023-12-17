@@ -71,10 +71,12 @@ body {
 
 #delTask:hover {
   background-color: red;
+  border-color: red;
 }
 
 #finishTask:hover {
   background-color: green;
+  border-color: green;
 }
 
 #mainleft {

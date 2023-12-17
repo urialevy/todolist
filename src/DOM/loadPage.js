@@ -1,7 +1,10 @@
-import { Project } from "../DATA/projects";
+import { Project, projectsArray } from "../DATA/projects";
 import { Task } from "../DATA/tasks";
 import { placeHolder } from "../DATA/projects";
 import { projOne } from "../DATA/projects";
+import { returnActive } from "../DATA/projects";
+import { changeActiveProject } from "../DATA/projects";
+
 
 export function framework() {
   const divFrame = document.createElement("div");
@@ -36,30 +39,37 @@ export const getProjTitles = (arr) => {
   return titlesArr;
 };
 
-export const injectProjHtml = (titlesArray) => {
+
+// generates DOM list of projects
+export const injectProjHtml = (projArray) => {
   let projectsList = document.querySelector("#projectsList");
   let projectNodeArr = [];
-  for (let i = 0; i < titlesArray.length; i++) {
+  for (let i = 0; i < projArray.length; i++) {
     let divNode = document.createElement("div");
     divNode.classList.add("project");
+    divNode.id = `${projArray[i].id}`
     projectsList.appendChild(divNode);
     projectNodeArr.push(divNode);
-    projectNodeArr[i].innerHTML = `${titlesArray[i]}`;
+    projectNodeArr[i].innerHTML = `${projArray[i].title}`;
   }
 };
 
-export const injectTaskHtml = (projArray, index) => {
+// generates list of tasks in DOM for a project
+export const updateTasks = () => {
   let taskNode = document.querySelector("#tasksList");
   let taskArr = [];
   taskNode.innerHTML = ``
-  for (let i = 0; i < projArray[index].tasksList.length; i++) {
+  // get currently active project
+  let currentProject = returnActive(projectsArray);
+  // append tasks to the task list from the project
+  for (let i = 0; i < currentProject.tasksList.length; i++) {
     let divNode = document.createElement("div");
     divNode.classList.add("task");
-    taskNode.appendChild(divNode);
     taskArr.push(divNode);
-    taskArr[i].innerHTML = `${projArray[index].tasksList[i]} <div class="taskMan"><button class ="delbtn">🗑️</button><button class="completebtn">✔</button><button class="editbtn">🖊️</button></div>`;
+    taskNode.appendChild(divNode)
+    taskArr[i].innerHTML = `${currentProject.tasksList[i]} <div class="taskMan"><button class ="delbtn">🗑️</button><button class="completebtn">✔</button><button class="editbtn">🖊️</button></div>` 
   }
-};
+}
 
 export const navigateProjects = () => {
   // get an array of the existing node list
@@ -68,7 +78,10 @@ export const navigateProjects = () => {
   for (let i = 0; i < nodeList.length; i++) {
     nodeList[i].addEventListener('click', function(e) {
       e.preventDefault()
-      injectTaskHtml(placeHolder(), i);
+      let UUID = nodeList[i].id
+      let associatedProject = projectsArray.find(element => element.id == UUID)
+      changeActiveProject(associatedProject)
+      updateTasks()
     })
   }
 }
