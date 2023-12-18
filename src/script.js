@@ -17,3 +17,4 @@ appendNodeToBody(framework());
 injectProjHtml(projectsArray);
 navigateProjects()
 updateTasks()
+addForm()

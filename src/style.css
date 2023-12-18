@@ -182,3 +182,15 @@ body {
   width: 80%;
   height: 80%;
 }
+
+
+.taskForm {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+}
+
+.taskForm>div {
+  display: flex;
+  gap: 2rem;
+}
