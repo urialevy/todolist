@@ -95,7 +95,7 @@ export const projBtns = () => {
     let formNode = document.createElement('form')
     formNode.id = 'newProj'
     formNode.action = 'submit'
-    formNode.innerHTML = `<input type="text" name="title" placeholder="Project title" required><button type="submit">Submit</button>`
+    formNode.innerHTML = `<input type="text" name="title" placeholder="Project title (required)" required><input type="text" placeholder="Project description"><div id="formNav"><input type="submit"></input><button>Cancel</button></div>`
     document.getElementById('mainright').innerHTML = ``
     document.getElementById('mainright').appendChild(formNode)
     formNode.addEventListener('submit', function(e) {
