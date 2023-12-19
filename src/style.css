@@ -79,6 +79,22 @@ body {
   border-color: green;
 }
 
+#newProj {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  align-items: space-around;
+  align-self: center;
+  gap: 1rem;
+}
+
+#formNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
 #mainleft {
   display: flex;
   flex-direction: column;
