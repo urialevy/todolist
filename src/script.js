@@ -9,7 +9,7 @@ import { getProjTitles } from "./DOM/loadPage";
 import { injectTaskHtml } from "./DOM/loadPage";
 import { navigateProjects } from "./DOM/loadPage";
 import { addTask } from "./DOM/newProject";
-import { addForm } from "./DOM/addTask";
+import { addForm, addTaskBtn, formListener } from "./DOM/addTask";
 import { projectsArray } from "./DATA/projects";
 
 
@@ -17,4 +17,4 @@ appendNodeToBody(framework());
 injectProjHtml(projectsArray);
 navigateProjects()
 updateTasks()
-addForm()
+addTaskBtn()
