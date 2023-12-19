@@ -95,7 +95,14 @@ export const projBtns = () => {
   let finishTaskBtn = document.getElementById('finishTask')
   addProjBtn.addEventListener('click', function(e) {
     e.preventDefault()
-    console.log('click')
+    let formNode = document.createElement('form')
+    formNode.id = 'newProj'
+    formNode.action = 'submit'
+    formNode.innerHTML = `<input type="text" name="title" placeholder="Project title" required><button type="submit">Submit</button>`
+    document.getElementById('taskTitle').innerHTML = ``
+    document.getElementById('tasksContainer').innerHTML = ``
+    document.getElementById('tasksContainer').appendChild(formNode)
+
   })
 
   delProjBtn.addEventListener('click', function(e) {
