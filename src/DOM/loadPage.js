@@ -1,7 +1,5 @@
-import { Project, projectsArray } from "../DATA/projects";
-import { Task } from "../DATA/tasks";
-import { placeHolder } from "../DATA/projects";
-import { projOne } from "../DATA/projects";
+import { el } from "date-fns/locale";
+import { projectsArray } from "../DATA/projects";
 import { returnActive } from "../DATA/projects";
 import { changeActiveProject } from "../DATA/projects";
 
@@ -32,13 +30,6 @@ export function framework() {
 export function appendNodeToBody(node) {
   document.body.appendChild(node);
 }
-export const getProjTitles = (arr) => {
-  let titlesArr = [];
-  arr.forEach((element) => {
-    titlesArr.push(element.title);
-  });
-  return titlesArr;
-};
 
 
 // generates DOM list of projects
@@ -58,11 +49,12 @@ export const injectProjHtml = (projArray) => {
 
 // generates list of tasks in DOM for a project
 export const updateTasks = () => {
+  let currentProject = returnActive(projectsArray);
+
   let taskNode = document.querySelector("#tasksList");
   let taskArr = [];
-  taskNode.innerHTML = ``
-  // get currently active project
-  let currentProject = returnActive(projectsArray);
+  if (taskNode) {
+  taskNode.innerHTML = ``  
   // append tasks to the task list from the project
   for (let i = 0; i < currentProject.tasksList.length; i++) {
     let divNode = document.createElement("div");
@@ -70,7 +62,7 @@ export const updateTasks = () => {
     taskArr.push(divNode);
     taskNode.appendChild(divNode)
     taskArr[i].innerHTML = `${currentProject.tasksList[i]} <div class="taskMan"><button class ="delbtn">🗑️</button><button class="completebtn">✔</button><button class="editbtn">🖊️</button></div>` 
-  }
+  }}
 }
 
 export const navigateProjects = () => {
@@ -80,12 +72,15 @@ export const navigateProjects = () => {
   for (let i = 0; i < nodeList.length; i++) {
     nodeList[i].addEventListener('click', function(e) {
       e.preventDefault()
+      // gets the UUID of the element using the DOM
       let UUID = nodeList[i].id
       let associatedProject = projectsArray.find(element => element.id == UUID)
       changeActiveProject(associatedProject)
+      document.getElementById('mainright').innerHTML=`<div id="taskTitle"><div><h2>${associatedProject.description}</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div></div>
+      <div id="tasksContainer">
+      <div id="tasksList">
+  </div>`
       updateTasks()
-      let taskTitle = document.getElementById('taskTitle')
-      taskTitle.innerHTML=`<div><h2>${associatedProject.description}</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div>`
     })
   }
 }
@@ -93,33 +88,44 @@ export const projBtns = () => {
   let addProjBtn = document.getElementById('newTask')
   let delProjBtn = document.getElementById('delTask')
   let finishTaskBtn = document.getElementById('finishTask')
+  let secondaryMenu = false;
   addProjBtn.addEventListener('click', function(e) {
+    secondaryMenu = true;
     e.preventDefault()
     let formNode = document.createElement('form')
     formNode.id = 'newProj'
     formNode.action = 'submit'
     formNode.innerHTML = `<input type="text" name="title" placeholder="Project title" required><button type="submit">Submit</button>`
-    document.getElementById('taskTitle').innerHTML = ``
-    document.getElementById('tasksContainer').innerHTML = ``
-    document.getElementById('tasksContainer').appendChild(formNode)
-
-  })
+    document.getElementById('mainright').innerHTML = ``
+    document.getElementById('mainright').appendChild(formNode)
+    formNode.addEventListener('submit', function(e) {
+      e.preventDefault()
+    })
+    }
+    
+  )
 
   delProjBtn.addEventListener('click', function(e) {
     e.preventDefault()
     let currentProject = returnActive(projectsArray);
     let index = projectsArray.indexOf(currentProject)
-    projectsArray.splice(index, 1)
-    if (projectsArray.length > 0) {
-      changeActiveProject(projectsArray[0])
-      updateTasks()
-      injectProjHtml(projectsArray)
+    if (secondaryMenu) {
+      secondaryMenu = false
+      document.getElementById('mainright').innerHTML=``
     }
+    else {
+      projectsArray.splice(index, 1)
+      if (projectsArray.length > 0) {
+        changeActiveProject(projectsArray[0])
+        updateTasks()
+        injectProjHtml(projectsArray)
+      }
      else {
       document.getElementById('projectsList').innerHTML = ``
-      document.getElementById('taskTitle').innerHTML = ``
-      document.getElementById('tasksContainer').innerHTML = ``
+      document.getElementById('mainright').innerHTML=``
      }
+
+    }
   })
   
 }
