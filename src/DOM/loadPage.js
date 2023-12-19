@@ -75,17 +75,16 @@ export const updateTasks = () => {
 export const navigateProjects = () => {
   // get an array of the existing node list
   let nodeList = document.querySelectorAll('.project')
-  let currentProject = returnActive(projectsArray)
   // add an event listener to each one of them, they adjust the DOM to show the correct project's display
   for (let i = 0; i < nodeList.length; i++) {
     nodeList[i].addEventListener('click', function(e) {
-      let taskTitle = document.getElementById('taskTitle')
-      taskTitle.innerHTML=`<div><h2>${currentProject.description}</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div>`
       e.preventDefault()
       let UUID = nodeList[i].id
       let associatedProject = projectsArray.find(element => element.id == UUID)
       changeActiveProject(associatedProject)
       updateTasks()
+      let taskTitle = document.getElementById('taskTitle')
+      taskTitle.innerHTML=`<div><h2>${associatedProject.description}</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div>`
     })
   }
 }
