@@ -1,6 +1,5 @@
-import { returnActive, projectsArray } from "../DATA/projects"
+import { Project, returnActive, projectsArray } from "../DATA/projects"
 import { Task } from "../DATA/tasks"
-import { Project } from "../DATA/projects"
 import { updateTasks } from "./loadPage"
 
 export const formListener = (node) => {
@@ -36,9 +35,7 @@ const cancelBtns = () => {
             btn.parentElement.parentElement.parentElement.remove()
         })
     })
-}
-
-    
+}    
 
 export const addTaskBtn = () => {
     let addTaskBtn = document.getElementById('addTask')
