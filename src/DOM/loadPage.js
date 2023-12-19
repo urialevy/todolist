@@ -44,6 +44,7 @@ export const getProjTitles = (arr) => {
 // generates DOM list of projects
 export const injectProjHtml = (projArray) => {
   let projectsList = document.querySelector("#projectsList");
+  projectsList.innerHTML = ``
   let projectNodeArr = [];
   for (let i = 0; i < projArray.length; i++) {
     let divNode = document.createElement("div");
@@ -88,4 +89,30 @@ export const navigateProjects = () => {
     })
   }
 }
- 
+export const projBtns = () => {
+  let addProjBtn = document.getElementById('newTask')
+  let delProjBtn = document.getElementById('delTask')
+  let finishTaskBtn = document.getElementById('finishTask')
+  addProjBtn.addEventListener('click', function(e) {
+    e.preventDefault()
+    console.log('click')
+  })
+
+  delProjBtn.addEventListener('click', function(e) {
+    e.preventDefault()
+    let currentProject = returnActive(projectsArray);
+    let index = projectsArray.indexOf(currentProject)
+    projectsArray.splice(index, 1)
+    if (projectsArray.length > 0) {
+      changeActiveProject(projectsArray[0])
+      updateTasks()
+      injectProjHtml(projectsArray)
+    }
+     else {
+      document.getElementById('projectsList').innerHTML = ``
+      document.getElementById('taskTitle').innerHTML = ``
+      document.getElementById('tasksContainer').innerHTML = ``
+     }
+  })
+  
+}

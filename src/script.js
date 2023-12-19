@@ -11,6 +11,7 @@ import { navigateProjects } from "./DOM/loadPage";
 import { addTask } from "./DOM/newProject";
 import { addForm, addTaskBtn, formListener } from "./DOM/addTask";
 import { projectsArray } from "./DATA/projects";
+import { projBtns } from "./DOM/loadPage";
 
 
 appendNodeToBody(framework());
@@ -18,3 +19,4 @@ injectProjHtml(projectsArray);
 navigateProjects()
 updateTasks()
 addTaskBtn()
+projBtns()
