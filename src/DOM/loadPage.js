@@ -7,6 +7,7 @@ import { changeActiveProject } from "../DATA/projects";
 
 
 export function framework() {
+  let currentProject = returnActive(projectsArray)
   const divFrame = document.createElement("div");
   divFrame.id = "container";
   divFrame.innerHTML = `<div id="header"><h1>To-do list</h1></div>
@@ -19,7 +20,7 @@ export function framework() {
             <button id="delTask"><h2>❌ Delete Project</h2></button>
             <button id="finishTask"><h2>✔ Complete Project</h2></button></div></div>
             <div id="mainright">
-                <div id="taskTitle"><div><h2>Tasks</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div></div>
+                <div id="taskTitle"><div><h2>${currentProject.description}</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div></div>
                 <div id="tasksContainer">
                 <div id="tasksList">
             </div></div>
@@ -74,9 +75,12 @@ export const updateTasks = () => {
 export const navigateProjects = () => {
   // get an array of the existing node list
   let nodeList = document.querySelectorAll('.project')
+  let currentProject = returnActive(projectsArray)
   // add an event listener to each one of them, they adjust the DOM to show the correct project's display
   for (let i = 0; i < nodeList.length; i++) {
     nodeList[i].addEventListener('click', function(e) {
+      let taskTitle = document.getElementById('taskTitle')
+      taskTitle.innerHTML=`<div><h2>${currentProject.description}</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div>`
       e.preventDefault()
       let UUID = nodeList[i].id
       let associatedProject = projectsArray.find(element => element.id == UUID)
