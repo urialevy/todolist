@@ -4,7 +4,7 @@ export class Project {
   constructor(title, description = "", dueDate = null) {
     this.title = title;
     this.description = description;
-    this.dueDate = dueDate;
+    // this.dueDate = dueDate;
     this.tasksList = [];
     this.active = Boolean;
     this.id = crypto.randomUUID()
@@ -20,8 +20,8 @@ export class Project {
   }
 }
 
-export const projOne = new Project("Project 1", "Description", "12.31.2023");
-export const projTwo = new Project("Project 2", "Some description", "");
+export const projOne = new Project("Project 1", "Description");
+export const projTwo = new Project("Project 2", "Some description");
 projOne.addTask("task 1 for proj 1");
 projOne.addTask("task 2 for proj 1", "with a description");
 projTwo.addTask("Task 1 for proj 2");
