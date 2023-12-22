@@ -1,7 +1,7 @@
 import { el } from "date-fns/locale";
 
 export class Project {
-  constructor(title, description = "", dueDate = null) {
+  constructor(title, description = "" /*dueDate = null*/) {
     this.title = title;
     this.description = description;
     // this.dueDate = dueDate;

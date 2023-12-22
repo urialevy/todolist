@@ -7,6 +7,7 @@ export const formListener = (node) => {
             node.addEventListener('submit', function(e) {
             e.preventDefault()
             let submissionValue = node.querySelector('.taskInput').value
+
                 currentProject.addTask(submissionValue); updateTasks()
         })        
     }
@@ -18,8 +19,7 @@ export const addForm = () => {
     let tasksList = document.getElementById('tasksList')
     formNode.innerHTML = `<form action="" class="taskForm"><div><label for:"description"></label><input type="text" placeholder="Type your task here..." class="taskInput" name="taskDescription" required></div><div><input type="submit" value="Save"><button class="cancelbtn">Cancel</button></div></form>`
     tasksList.appendChild(formNode)
-    formListener(formNode)
-    
+    formListener(formNode)    
 }
 const cancelBtns = () => {
     let formCancelBtns = document.querySelectorAll('.cancelbtn')

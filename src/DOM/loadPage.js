@@ -2,12 +2,31 @@ import { el } from "date-fns/locale";
 import { projectsArray } from "../DATA/projects";
 import { returnActive } from "../DATA/projects";
 import { changeActiveProject } from "../DATA/projects";
+import { Project } from "../DATA/projects";
+import { addTaskBtn } from "./addTask";
 
+
+export const recreateDOM = () => {
+  document.body.innerHTML = ``
+  appendNodeToBody(framework());
+  injectProjHtml(projectsArray);
+  navigateProjects()
+  updateTasks()
+  projBtns()
+  addTaskBtn() 
+}
 
 export function framework() {
   let currentProject = returnActive(projectsArray)
   const divFrame = document.createElement("div");
   divFrame.id = "container";
+  let title = ""
+  if (currentProject.description) {
+    title = `${currentProject.title}: ${currentProject.description}`
+  }
+  else {
+    title = `${currentProject.title}`
+  }
   divFrame.innerHTML = `<div id="header"><h1>To-do list</h1></div>
     <div id="main">
         <div id="mainleft">
@@ -18,7 +37,7 @@ export function framework() {
             <button id="delTask"><h2>❌ Delete Project</h2></button>
             <button id="finishTask"><h2>✔ Complete Project</h2></button></div></div>
             <div id="mainright">
-                <div id="taskTitle"><div><h2>${currentProject.description}</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div></div>
+                <div id="taskTitle"><div><h2>${title}</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div></div>
                 <div id="tasksContainer">
                 <div id="tasksList">
             </div></div>
@@ -50,21 +69,21 @@ export const injectProjHtml = (projArray) => {
 // generates list of tasks in DOM for a project
 export const updateTasks = () => {
   let currentProject = returnActive(projectsArray);
-
   let taskNode = document.querySelector("#tasksList");
   let taskArr = [];
   if (taskNode) {
   taskNode.innerHTML = ``  
   // append tasks to the task list from the project
+  if (currentProject.tasksList) {
   for (let i = 0; i < currentProject.tasksList.length; i++) {
     let divNode = document.createElement("div");
     divNode.classList.add("task");
     taskArr.push(divNode);
     taskNode.appendChild(divNode)
     taskArr[i].innerHTML = `${currentProject.tasksList[i]} <div class="taskMan"><button class ="delbtn">🗑️</button><button class="completebtn">✔</button><button class="editbtn">🖊️</button></div>` 
-  }}
+  }}}
 }
-
+// creates navigation menu on the left for projects
 export const navigateProjects = () => {
   // get an array of the existing node list
   let nodeList = document.querySelectorAll('.project')
@@ -75,8 +94,14 @@ export const navigateProjects = () => {
       // gets the UUID of the element using the DOM
       let UUID = nodeList[i].id
       let associatedProject = projectsArray.find(element => element.id == UUID)
-      changeActiveProject(associatedProject)
-      document.getElementById('mainright').innerHTML=`<div id="taskTitle"><div><h2>${associatedProject.description}</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div></div>
+      let title = ""
+      if (associatedProject.description) {
+        title = `${associatedProject.title}: ${associatedProject.description}`
+      }
+      else {
+        title = `${associatedProject.title}`
+      }
+      document.getElementById('mainright').innerHTML=`<div id="taskTitle"><div><h2>${title}</h2></div><div><button id="addTask"><h2>+Add Task</h2></button></div></div>
       <div id="tasksContainer">
       <div id="tasksList">
   </div>`
@@ -95,16 +120,29 @@ export const projBtns = () => {
     let formNode = document.createElement('form')
     formNode.id = 'newProj'
     formNode.action = 'submit'
-    formNode.innerHTML = `<input type="text" name="title" placeholder="Project title (required)" required><input type="text" placeholder="Project description"><div id="formNav"><input type="submit"></input><button>Cancel</button></div>`
+    formNode.innerHTML = `<input type="text" name="title" placeholder="Project title" id="projTitle" required><input type="text" placeholder="Project description" id="projDesc"><div id="formNav"><input type="submit"></input><button id="cancelProjBtn">Cancel</button></div>`
     document.getElementById('mainright').innerHTML = ``
+    let cancelBtn = document.getElementById('cancelProjBtn')
     document.getElementById('mainright').appendChild(formNode)
     formNode.addEventListener('submit', function(e) {
+      secondaryMenu == true ? secondaryMenu = false : secondaryMenu = false
       e.preventDefault()
-    })
+      let projName = document.getElementById('projTitle').value
+      let projDesc = document.getElementById('projDesc').value
+      let newProject = new Project (projName, projDesc, "")
+      newProject.active=false
+      projectsArray.push(newProject)
+      changeActiveProject(newProject)
+      recreateDOM()
+      
+      
     }
+    )
+    
+  }
     
   )
-
+  
   delProjBtn.addEventListener('click', function(e) {
     e.preventDefault()
     let currentProject = returnActive(projectsArray);
@@ -127,5 +165,7 @@ export const projBtns = () => {
 
     }
   })
-  
+  finishTaskBtn.addEventListener('click', function(e) {
+
+  })
 }
