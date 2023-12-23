@@ -5,3 +5,5 @@ export class Task {
         this.dueDate = dueDate;
     }
 }
+
+export const finishedTasks = []
