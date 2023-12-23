@@ -24,6 +24,9 @@ export function framework() {
   if (currentProject.description) {
     title = `${currentProject.title}: ${currentProject.description}`
   }
+  else if (currentProject.description == null && currentProject.title == null) {
+    title = ``
+  }
   else {
     title = `${currentProject.title}`
   }
@@ -122,8 +125,13 @@ export const projBtns = () => {
     formNode.action = 'submit'
     formNode.innerHTML = `<input type="text" name="title" placeholder="Project title" id="projTitle" required><input type="text" placeholder="Project description" id="projDesc"><div id="formNav"><input type="submit"></input><button id="cancelProjBtn">Cancel</button></div>`
     document.getElementById('mainright').innerHTML = ``
-    let cancelBtn = document.getElementById('cancelProjBtn')
     document.getElementById('mainright').appendChild(formNode)
+    let cancelBtn = document.getElementById('cancelProjBtn')
+    cancelBtn.addEventListener('click', function(e) {
+      e.preventDefault()
+      recreateDOM()
+    })
+    
     formNode.addEventListener('submit', function(e) {
       secondaryMenu == true ? secondaryMenu = false : secondaryMenu = false
       e.preventDefault()
@@ -133,9 +141,7 @@ export const projBtns = () => {
       newProject.active=false
       projectsArray.push(newProject)
       changeActiveProject(newProject)
-      recreateDOM()
-      
-      
+      recreateDOM()     
     }
     )
     
@@ -162,6 +168,7 @@ export const projBtns = () => {
       document.getElementById('projectsList').innerHTML = ``
       document.getElementById('mainright').innerHTML=``
      }
+     recreateDOM()
 
     }
   })
