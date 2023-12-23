@@ -49,3 +49,5 @@ export const changeActiveProject = (proj) => {
   proj.active = true
 }
 changeActiveProject(projTwo)
+
+export const finishedProjects = [];
