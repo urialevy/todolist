@@ -87,9 +87,28 @@ export const updateTasks = () => {
     divNode.classList.add("task");
     taskArr.push(divNode);
     taskNode.appendChild(divNode)
-    taskArr[i].innerHTML = `${currentProject.tasksList[i]} <div class="taskMan"><button class ="delbtn">🗑️</button><button class="completebtn">✔</button><button class="editbtn">🖊️</button></div>` 
+    taskArr[i].innerHTML = `${currentProject.tasksList[i]} <div class="taskMan"><button class="completebtn">✔</button><button class="editbtn">🖊️</button><button class ="delbtn">🗑️</button></div>` 
+    taskManBtns(divNode)
   }}}
 }
+
+export const taskManBtns = (taskNode) => {
+  let delTaskBtn = taskNode.querySelector('.delbtn')
+  let finishTaskBtn = taskNode.querySelector('.completebtn')
+  let  editTaskBtn = taskNode.querySelector('.editbtn')
+
+  delTaskBtn.addEventListener('click', function(e) {
+    console.log('click 1')
+  })
+  finishTaskBtn.addEventListener('click', function(e) {
+    console.log('click 2')
+  })
+  editTaskBtn.addEventListener('click', function(e) {
+    console.log('click 3')
+  })
+}
+
+
 // creates navigation menu on the left for projects
 export const navigateProjects = () => {
   // get an array of the existing node list
@@ -121,7 +140,7 @@ export const navigateProjects = () => {
 export const projBtns = () => {
   let addProjBtn = document.getElementById('newTask')
   let delProjBtn = document.getElementById('delTask')
-  let finishTaskBtn = document.getElementById('finishTask')
+  let finishprojBtn = document.getElementById('finishTask')
   let secondaryMenu = false;
   addProjBtn.addEventListener('click', function(e) {
     secondaryMenu = true;
@@ -176,7 +195,7 @@ export const projBtns = () => {
 
     }
   })
-  finishTaskBtn.addEventListener('click', function(e) {
+  finishprojBtn.addEventListener('click', function(e) {
     if (secondaryMenu) {}
     else {
       let currentProject = returnActive(projectsArray)
