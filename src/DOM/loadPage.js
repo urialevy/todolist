@@ -1,8 +1,8 @@
 import { el } from "date-fns/locale";
-import { projectsArray } from "../DATA/projects";
+import { completeProjectData, projectsArray } from "../DATA/projects";
 import { returnActive } from "../DATA/projects";
 import { changeActiveProject } from "../DATA/projects";
-import { Project } from "../DATA/projects";
+import { Project, finishedProjects } from "../DATA/projects";
 import { addTaskBtn } from "./addTask";
 
 
@@ -14,6 +14,10 @@ export const recreateDOM = () => {
   updateTasks()
   projBtns()
   addTaskBtn() 
+  let currentProject = returnActive(projectsArray)
+  if (currentProject.title == null) {
+    document.getElementById('mainright').innerHTML = ``;
+  }
 }
 
 export function framework() {
@@ -176,7 +180,20 @@ export const projBtns = () => {
     if (secondaryMenu) {}
     else {
       let currentProject = returnActive(projectsArray)
-      console.log(currentProject)
+      finishedProjects.push(currentProject)
+      let associatedProject = projectsArray.find(proj => proj.id === currentProject.id)
+      let index = projectsArray.indexOf(currentProject)
+      projectsArray.splice(index, 1)
+      if (projectsArray.length > 0) {
+        changeActiveProject(projectsArray[0])
+        updateTasks()
+        injectProjHtml(projectsArray)
+      }
+     else {
+      document.getElementById('projectsList').innerHTML = ``
+      document.getElementById('mainright').innerHTML=``
+     }
+      recreateDOM()
     }
 
   })
