@@ -130,6 +130,7 @@ export const projBtns = () => {
     cancelBtn.addEventListener('click', function(e) {
       e.preventDefault()
       recreateDOM()
+      secondaryMenu = false;
     })
     
     formNode.addEventListener('submit', function(e) {
@@ -141,14 +142,11 @@ export const projBtns = () => {
       newProject.active=false
       projectsArray.push(newProject)
       changeActiveProject(newProject)
-      recreateDOM()     
-    }
-    )
-    
-  }
-    
-  )
-  
+      recreateDOM()
+      secondaryMenu = false;
+    })
+  })
+
   delProjBtn.addEventListener('click', function(e) {
     e.preventDefault()
     let currentProject = returnActive(projectsArray);
