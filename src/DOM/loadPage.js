@@ -97,6 +97,7 @@ export const navigateProjects = () => {
       // gets the UUID of the element using the DOM
       let UUID = nodeList[i].id
       let associatedProject = projectsArray.find(element => element.id == UUID)
+      changeActiveProject(associatedProject)
       let title = ""
       if (associatedProject.description) {
         title = `${associatedProject.title}: ${associatedProject.description}`
@@ -109,6 +110,7 @@ export const navigateProjects = () => {
       <div id="tasksList">
   </div>`
       updateTasks()
+      addTaskBtn()
     })
   }
 }
@@ -171,6 +173,11 @@ export const projBtns = () => {
     }
   })
   finishTaskBtn.addEventListener('click', function(e) {
+    if (secondaryMenu) {}
+    else {
+      let currentProject = returnActive(projectsArray)
+      console.log(currentProject)
+    }
 
   })
 }
