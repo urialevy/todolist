@@ -15,7 +15,7 @@ export class Project {
   removeTask(task) {
     const taskIndex = this.tasksList.indexOf(task);
     if (taskIndex !== -1) {
-      this.tasksList.splice(taskIndex, 11);
+      this.tasksList.splice(taskIndex, 1);
     }
   }
 }
