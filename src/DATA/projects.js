@@ -1,5 +1,7 @@
 import { el } from "date-fns/locale";
 import { Task } from "./tasks";
+import CompoundedSpace from "antd/es/space";
+// import { saveProject } from "./storage";
 
 export class Project {
   constructor(title, description = "") {
@@ -23,7 +25,7 @@ export class Project {
 export const projOne = new Project("Project 1", "Description");
 export const projTwo = new Project("Project 2", "Some description");
 const testTaskOne = new Task ("task 1 for proj 1")
-const testTaskTwo = new Task ("task 2 for proj 1")
+const testTaskTwo = new Task ("taskIt's  2 for proj 1")
 const testTaskThree = new Task ("task 1 for proj 2")
 const testTaskFour = new Task("task 2 for proj 2")
 projOne.addTask(testTaskOne);
@@ -56,3 +58,14 @@ export const changeActiveProject = (proj) => {
 changeActiveProject(projTwo)
 
 export const finishedProjects = [];
+
+
+const currentProject = returnActive(projectsArray)
+
+export const saveProjects = (projArr) => {
+  localStorage.clear()
+  projArr.forEach(proj => {
+    localStorage.setItem(`project_${localStorage.length}`, JSON.stringify(proj))
+  })
+}
+saveProjects(projectsArray)
