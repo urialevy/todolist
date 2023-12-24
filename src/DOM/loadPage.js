@@ -85,20 +85,33 @@ export const updateTasks = () => {
   for (let i = 0; i < currentProject.tasksList.length; i++) {
     let divNode = document.createElement("div");
     divNode.classList.add("task");
+    console.log(divNode.id = currentProject.tasksList[i])
+    console.log(currentProject)
+    // divNode.id = currentProject.tasksList[i].id
     taskArr.push(divNode);
     taskNode.appendChild(divNode)
-    taskArr[i].innerHTML = `${currentProject.tasksList[i]} <div class="taskMan"><button class="completebtn">✔</button><button class="editbtn">🖊️</button><button class ="delbtn">🗑️</button></div>` 
-    taskManBtns(divNode)
+    taskArr[i].innerHTML = `${currentProject.tasksList[i].name} <div class="taskMan"><button class="completebtn">✔</button><button class="editbtn">🖊️</button><button class ="delbtn">🗑️</button></div>` 
+    taskManBtns(divNode, currentProject.tasksList[i])
   }}}
 }
 
-export const taskManBtns = (taskNode) => {
+export const taskManBtns = (taskNode, task) => {
+  let currentProject = returnActive(projectsArray);
   let delTaskBtn = taskNode.querySelector('.delbtn')
   let finishTaskBtn = taskNode.querySelector('.completebtn')
   let  editTaskBtn = taskNode.querySelector('.editbtn')
-
+ 
   delTaskBtn.addEventListener('click', function(e) {
-    console.log('click 1')
+
+    // console.log(currentProject.tasksList)    
+    // let index = projectsArray.indexOf(currentProject)
+    // console.log(task)
+    // let UUID = nodeList[i].id
+    // let associatedProject = projectsArray.find(element => element.id == UUID)
+    let taskUUID = task.id
+    console.log(taskUUID)
+    let associatedTask = currentProject.tasksList.find(element => element.id == taskUUID)
+    console.log(associatedTask)
   })
   finishTaskBtn.addEventListener('click', function(e) {
     console.log('click 2')
