@@ -7,8 +7,8 @@ export const formListener = (node) => {
             node.addEventListener('submit', function(e) {
             e.preventDefault()
             let submissionValue = node.querySelector('.taskInput').value
-
-                currentProject.addTask(submissionValue); updateTasks()
+                newTask = new Task(submissionValue)
+                currentProject.addTask(newTask); updateTasks()
         })        
     }
 
