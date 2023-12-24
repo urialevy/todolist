@@ -1,109 +1,213 @@
 /* Using color palette: https://palettes.shecodes.io/palettes/1448 */
 
 body {
-   font-family: Arial, Helvetica, sans-serif; 
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-#container, #main, #header, #footer {
-    display: flex;
-    width: 100%; 
+#container,
+#main,
+#header,
+#footer {
+  display: flex;
+  width: 100%;
 }
 
 #container {
-    flex-direction: column;
-    height: 100vh;
-    width: 100vw;
-    align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
 }
 
-
-
-#header, #footer {
-    color: #e7eaf6;
-    background-color: #113f67;
-    height: 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#header,
+#footer {
+  color: #e7eaf6;
+  background-color: #113f67;
+  height: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #main {
-    display: flex;
-    flex-direction: row;
-    justify-content:first baseline;
-    align-items: center;
-    color: #113f67;
-    background-color: #e7eaf6;
-    height: 80%;
-    width: 100%;
-    
+  display: flex;
+  flex-direction: row;
+  justify-content: first baseline;
+  align-items: center;
+  color: #113f67;
+  background-color: #e7eaf6;
+  height: 80%;
+  width: 100%;
 }
 
-#newTask {
-    margin-bottom: 2rem;
-    padding: 10px 25px;
-    background: transparent;
-    outline: none !important;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    border: 2px solid #113f67;
-    z-index: 1;
-    color: #e7eaf6;
-    background-color: #113f67;
-    border-radius: 5%;
+#newTask, .project, #delTask, #finishTask, #addTask {
+  margin-bottom: 2rem;
+  padding: 10px 25px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid #113f67;
+  z-index: 1;
+  color: #e7eaf6;
+  background-color: #113f67;
+  border-radius: 5%;
 }
 
-#newTask:hover {
-    color: #113f67;
-    background-color: #e7eaf6;
-    border-color: #e7eaf6;
+#newTask:hover, .project:hover, #delTask:hover, #finishTask:hover {
+  color: #113f67;
+  background-color: #e7eaf6;
+  border-color: #e7eaf6;
+}
+
+#addTask:hover{
+  cursor: grab;
+  background-color: #a2a8d3;
+  border-color: #a2a8d3;
+}
+
+#delTask:hover {
+  background-color: red;
+  border-color: red;
+}
+
+#finishTask:hover {
+  background-color: green;
+  border-color: green;
+}
+
+#newProj {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  align-items: space-around;
+  align-self: center;
+  gap: 1rem;
+}
+
+#formNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 1rem;
 }
 
 #mainleft {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 30%;
-    height: 100%;
-    background-color: #a2a8d3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 30%;
+  height: 100%;
+  background-color: #a2a8d3;
 }
+
 #mainright {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 70%;
-    height: 100%
-    ;
+  padding-top: 1rem ;
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  width: 70%;
+  height: 100%;
 }
 
 #projectsList {
-    width: 80%;
-    height: 80%;
-    }
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 80%;
+}
 
 .project {
-    border: solid black;    
-    padding: 10px 25px;
-    margin: 1rem 1rem 1rem 1rem;
+  margin-bottom: 2rem;
+  padding: 10px 25px;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  border: 2px solid #113f67;
+  z-index: 1;
+  color: #e7eaf6;
+  background-color: #113f67;
+  border-radius: 5%;
+  margin: 1rem 1rem 1rem 1rem;
 }
 
 .task {
-    border: solid black;    
-    padding: 10px 25px;
-    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  background-color: #113f67;
+  color: #e7eaf6;
+  padding: 10px 25px;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
 
+.delbtn, .completebtn, .editbtn {
+  color: #113f67;
+  background-color: #a2a8d3;
+  border-radius: 20%;
+  transition: 0.3s ease;
+}
+
+.editbtn:hover {
+  cursor: grab;
+  background-color: orange;
+}
+
+.delbtn:hover {
+  cursor: grab;
+  background-color: red;
+}
+
+.completebtn:hover {
+  cursor: grab;
+  background-color: green;
+}
+
+.taskMan {
+  width: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  column-gap: 1rem;
+}
+
+
+
 #taskTitle {
-    display: flex;
-    justify-content: center;
-    
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly
+}
+
+#tasksContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+#projectNav {
+  display: flex;
+  flex-direction: column;
 }
 
 #tasksList {
-    width: 80%;
-    height: 80%;
-    }
+  width: 80%;
+  height: 80%;
+}
+
+
+.taskForm {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+}
+
+.taskForm>div {
+  display: flex;
+  gap: 2rem;
+}
