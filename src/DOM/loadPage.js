@@ -86,7 +86,7 @@ export const updateTasks = () => {
   for (let i = 0; i < currentProject.tasksList.length; i++) {
     let divNode = document.createElement("div");
     divNode.classList.add("task");
-    // divNode.id = currentProject.tasksList[i].id
+    divNode.id = currentProject.tasksList[i].id
     taskArr.push(divNode);
     taskNode.appendChild(divNode)
     taskArr[i].innerHTML = `${currentProject.tasksList[i].name} <div class="taskMan"><button class="completebtn">✔</button><button class="editbtn">🖊️</button><button class ="delbtn">🗑️</button></div>` 
