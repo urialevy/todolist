@@ -4,6 +4,7 @@ import { returnActive } from "../DATA/projects";
 import { changeActiveProject } from "../DATA/projects";
 import { Project, finishedProjects } from "../DATA/projects";
 import { addTaskBtn } from "./addTask";
+import { finishedTasks } from "../DATA/tasks";
 
 
 export const recreateDOM = () => {
@@ -85,8 +86,6 @@ export const updateTasks = () => {
   for (let i = 0; i < currentProject.tasksList.length; i++) {
     let divNode = document.createElement("div");
     divNode.classList.add("task");
-    console.log(divNode.id = currentProject.tasksList[i])
-    console.log(currentProject)
     // divNode.id = currentProject.tasksList[i].id
     taskArr.push(divNode);
     taskNode.appendChild(divNode)
@@ -100,24 +99,33 @@ export const taskManBtns = (taskNode, task) => {
   let delTaskBtn = taskNode.querySelector('.delbtn')
   let finishTaskBtn = taskNode.querySelector('.completebtn')
   let  editTaskBtn = taskNode.querySelector('.editbtn')
- 
+  let taskUUID = task.id
+  let associatedTask = currentProject.tasksList.find(element => element.id == taskUUID)
+  let taskIndex = currentProject.tasksList.indexOf(associatedTask)
   delTaskBtn.addEventListener('click', function(e) {
-
-    // console.log(currentProject.tasksList)    
-    // let index = projectsArray.indexOf(currentProject)
-    // console.log(task)
-    // let UUID = nodeList[i].id
-    // let associatedProject = projectsArray.find(element => element.id == UUID)
-    let taskUUID = task.id
-    console.log(taskUUID)
-    let associatedTask = currentProject.tasksList.find(element => element.id == taskUUID)
-    console.log(associatedTask)
+    currentProject.tasksList.splice(taskIndex, 1)
+    recreateDOM()
   })
   finishTaskBtn.addEventListener('click', function(e) {
-    console.log('click 2')
+    finishedTasks.push(currentProject)
+    finishedTasks.push(currentProject.tasksList.associatedTask)
+    currentProject.tasksList.splice(taskIndex, 1)
+    recreateDOM()
   })
   editTaskBtn.addEventListener('click', function(e) {
-    console.log('click 3')
+    
+    taskNode.innerHTML = `<form action="" class="taskForm"><div><label for:"description"></label><input type="text" placeholder="Type your task here..." value="${task.name}" class="taskInput" name="taskDescription" required></div><div><input type="submit" value="Save"><button class="cancelbtn">Cancel</button></div></form>`;
+    taskNode.addEventListener('submit', function(e) {
+      e.preventDefault()
+      task.name = taskNode.querySelector('.taskInput').value
+      console.log(task.name)
+      recreateDOM()
+    })
+    taskNode.querySelector('.cancelbtn').addEventListener('click', function(e) {
+      e.preventDefault()
+      recreateDOM()
+    })
+
   })
 }
 
@@ -156,8 +164,8 @@ export const projBtns = () => {
   let finishprojBtn = document.getElementById('finishTask')
   let secondaryMenu = false;
   addProjBtn.addEventListener('click', function(e) {
-    secondaryMenu = true;
     e.preventDefault()
+    secondaryMenu = true;
     let formNode = document.createElement('form')
     formNode.id = 'newProj'
     formNode.action = 'submit'
