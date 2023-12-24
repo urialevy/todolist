@@ -4,13 +4,19 @@ import CompoundedSpace from "antd/es/space";
 // import { saveProject } from "./storage";
 
 export class Project {
-  constructor(title, description = "") {
+  constructor(title, description = null, id=crypto.randomUUID()) {
     this.title = title;
     this.description = description;
     this.tasksList = [];
     this.active = Boolean;
-    this.id = crypto.randomUUID()
+    this.id = id;
   }
+
+  addToStorage() {
+    console.log(this)
+    localStorage.setItem(`project_${localStorage.length}`, JSON.stringify(this))
+  }
+
   addTask(task) {
     this.tasksList.push(task);
   }
@@ -61,11 +67,14 @@ export const finishedProjects = [];
 
 
 const currentProject = returnActive(projectsArray)
+const projThree = new Project('Just a standalone Project')
+completeProjectData(projThree)
+projThree.addToStorage()
 
-export const saveProjects = (projArr) => {
-  localStorage.clear()
-  projArr.forEach(proj => {
-    localStorage.setItem(`project_${localStorage.length}`, JSON.stringify(proj))
-  })
-}
-saveProjects(projectsArray)
+// export const saveProjects = (projArr) => {
+//   localStorage.clear()
+//   projArr.forEach(proj => {
+//     localStorage.setItem(`project_${localStorage.length}`, JSON.stringify(proj))
+//   })
+// }
+// saveProjects(projectsArray)

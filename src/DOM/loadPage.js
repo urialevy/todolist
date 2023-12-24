@@ -189,7 +189,7 @@ export const projBtns = () => {
       newProject.active=false
       projectsArray.push(newProject)
       changeActiveProject(newProject)
-      saveProjects(projectsArray)
+    //   saveProjects(projectsArray)
       recreateDOM()
       secondaryMenu = false;
     })
@@ -205,7 +205,7 @@ export const projBtns = () => {
     }
     else {
       projectsArray.splice(index, 1)
-      saveProjects(projectsArray)
+    //   saveProjects(projectsArray)
       if (projectsArray.length > 0) {
         changeActiveProject(projectsArray[0])
         updateTasks()
