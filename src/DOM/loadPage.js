@@ -56,7 +56,7 @@ export function framework() {
 
             </div>
             </div>
-    <div id="footer"><div class="text-red-700"><p class="text-red-700">LOREM IPSUM!</p></div></div>`;
+    <div id="footer"><div><p>Created by Uria Levy for the ODIN Project</p></div></div>`;
   return divFrame;
 }
 export function appendNodeToBody(node) {
