@@ -1,20 +1,23 @@
 import { el } from "date-fns/locale";
 import { Task } from "./tasks";
 import CompoundedSpace from "antd/es/space";
+import { recreateDOM } from "../DOM/loadPage";
 // import { saveProject } from "./storage";
+
+
 
 export class Project {
   constructor(title, description = null, id=crypto.randomUUID()) {
     this.title = title;
     this.description = description;
     this.tasksList = [];
-    this.active = Boolean;
+    this.active = false;
     this.id = id;
   }
 
   addToStorage() {
-    console.log(this)
-    localStorage.setItem(`project_${localStorage.length}`, JSON.stringify(this))
+    localStorage.setItem(`project_${this.id}`,JSON.stringify(this))
+    console.log(JSON.parse(localStorage.getItem(`project_${this.id}`)))
   }
 
   addTask(task) {
@@ -28,25 +31,13 @@ export class Project {
   }
 }
 
-export const projOne = new Project("Project 1", "Description");
-export const projTwo = new Project("Project 2", "Some description");
-const testTaskOne = new Task ("task 1 for proj 1")
-const testTaskTwo = new Task ("taskIt's  2 for proj 1")
-const testTaskThree = new Task ("task 1 for proj 2")
-const testTaskFour = new Task("task 2 for proj 2")
-projOne.addTask(testTaskOne);
-projOne.addTask(testTaskTwo)
-projTwo.addTask(testTaskThree);
-projTwo.addTask(testTaskFour);
-projOne.active = true;
 // creates array of all projects and returns items to it. Used whenever a project is created or deleted.
-export const projectsArray = []
+export let projectsArray = []
 
 export const completeProjectData = (proj) => {
   projectsArray.push(proj)
 }
-completeProjectData(projOne)
-completeProjectData(projTwo)
+
 export const returnActive = (arr) => {
   let activeProj = ""
   arr.forEach(element => {
@@ -54,6 +45,7 @@ export const returnActive = (arr) => {
   })
   return activeProj
 }
+const currentProject = returnActive(projectsArray)
 
 export const changeActiveProject = (proj) => {
   projectsArray.forEach(project => {
@@ -61,20 +53,30 @@ export const changeActiveProject = (proj) => {
   })
   proj.active = true
 }
-changeActiveProject(projTwo)
 
 export const finishedProjects = [];
 
+export function loadProjectsFromLocalStorage() {
+  if (localStorage.length == 0 || JSON.parse(localStorage.getItem('projArr')).length == 0) {
+    let projOne = new Project("Project 1", "Description");
+    let projTwo = new Project("Project 2", "Some description");
+    let testTaskOne = new Task ("task 1 for proj 1")
+    let testTaskTwo = new Task ("taskIt's  2 for proj 1")
+    let testTaskThree = new Task ("task 1 for proj 2")
+    let testTaskFour = new Task("task 2 for proj 2")
+    let projThree = new Project('Just a standalone Project')
+    projOne.addTask(testTaskOne);
+    projOne.addTask(testTaskTwo)
+    projTwo.addTask(testTaskThree);
+    projTwo.addTask(testTaskFour);
+    projOne.active = true
+    projectsArray.push(projOne, projTwo, projThree)
+    localStorage.setItem('projArr', JSON.stringify(projectsArray))
+  }
+  else {
+    projectsArray = JSON.parse(localStorage.getItem('projArr'))
+    
+  }
+}
 
-const currentProject = returnActive(projectsArray)
-const projThree = new Project('Just a standalone Project')
-completeProjectData(projThree)
-projThree.addToStorage()
-
-// export const saveProjects = (projArr) => {
-//   localStorage.clear()
-//   projArr.forEach(proj => {
-//     localStorage.setItem(`project_${localStorage.length}`, JSON.stringify(proj))
-//   })
-// }
-// saveProjects(projectsArray)
+loadProjectsFromLocalStorage()

@@ -1,5 +1,5 @@
 import { el } from "date-fns/locale";
-import { completeProjectData, projectsArray, saveProjects } from "../DATA/projects";
+import { completeProjectData, loadProjectsFromLocalStorage, projectsArray, saveProjects } from "../DATA/projects";
 import { returnActive } from "../DATA/projects";
 import { changeActiveProject } from "../DATA/projects";
 import { Project, finishedProjects } from "../DATA/projects";
@@ -10,6 +10,8 @@ import { finishedTasks } from "../DATA/tasks";
 
 export const recreateDOM = () => {
   document.body.innerHTML = ``
+  localStorage.setItem('projArr', JSON.stringify(projectsArray))
+  
   appendNodeToBody(framework());
   injectProjHtml(projectsArray);
   navigateProjects()
@@ -17,9 +19,10 @@ export const recreateDOM = () => {
   projBtns()
   addTaskBtn() 
   let currentProject = returnActive(projectsArray)
-  if (currentProject.title == null) {cl
+  if (currentProject.title == null) {
     document.getElementById('mainright').innerHTML = ``;
   }
+  loadProjectsFromLocalStorage()
 }
 
 export function framework() {
@@ -50,6 +53,7 @@ export function framework() {
                 <div id="tasksContainer">
                 <div id="tasksList">
             </div></div>
+
             </div>
             </div>
     <div id="footer"><div class="text-red-700"><p class="text-red-700">LOREM IPSUM!</p></div></div>`;
@@ -189,7 +193,6 @@ export const projBtns = () => {
       newProject.active=false
       projectsArray.push(newProject)
       changeActiveProject(newProject)
-    //   saveProjects(projectsArray)
       recreateDOM()
       secondaryMenu = false;
     })
@@ -224,7 +227,6 @@ export const projBtns = () => {
     else {
       let currentProject = returnActive(projectsArray)
       finishedProjects.push(currentProject)
-      let associatedProject = projectsArray.find(proj => proj.id === currentProject.id)
       let index = projectsArray.indexOf(currentProject)
       projectsArray.splice(index, 1)
       if (projectsArray.length > 0) {
