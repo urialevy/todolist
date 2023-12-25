@@ -158,6 +158,7 @@ export const navigateProjects = () => {
       <div id="tasksContainer">
       <div id="tasksList">
   </div>`
+      changeActiveProject(associatedProject)
       updateTasks()
       addTaskBtn()
     })
