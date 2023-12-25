@@ -8,8 +8,7 @@ export const formListener = (node) => {
             let currentProject = returnActive(projectsArray)
             let submissionValue = node.querySelector('.taskInput').value
             let newTask = new Task(submissionValue)
-            console.log(currentProject)
-            currentProject.addTask(newTask)
+            currentProject.tasksList.push(newTask)
             recreateDOM()
         })        
     }
