@@ -17,7 +17,7 @@ devtool: 'inline-source-map',
     rules: [
       {
         test: /\.css$/i,
-        include: path.resolve(__dirname, 'src'),
+        include: path.resolve(__dirname, 'dist'),
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
