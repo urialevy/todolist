@@ -1,4 +1,4 @@
-import "/dist/style.css";
+import "./style.css";
 import { framework, projOne, recreateDOM, updateTasks } from "./DOM/loadPage";
 import { appendNodeToBody } from "./DOM/loadPage";
 import { compareAsc, format } from "date-fns";
