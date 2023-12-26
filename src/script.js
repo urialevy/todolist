@@ -1,5 +1,5 @@
 import "./style.css";
-import { framework, projOne, updateTasks } from "./DOM/loadPage";
+import { framework, projOne, recreateDOM, updateTasks } from "./DOM/loadPage";
 import { appendNodeToBody } from "./DOM/loadPage";
 import { compareAsc, format } from "date-fns";
 import { Task } from "./DATA/tasks";
@@ -9,13 +9,7 @@ import { getProjTitles } from "./DOM/loadPage";
 import { injectTaskHtml } from "./DOM/loadPage";
 import { navigateProjects } from "./DOM/loadPage";
 import { addForm, addTaskBtn, formListener } from "./DOM/addTask";
-import { projectsArray } from "./DATA/projects";
+import { projectsArray, loadProjectsFromLocalStorage } from "./DATA/projects";
 import { projBtns } from "./DOM/loadPage";
 
-
-appendNodeToBody(framework());
-injectProjHtml(projectsArray);
-navigateProjects()
-updateTasks()
-addTaskBtn()
-projBtns()
+recreateDOM()

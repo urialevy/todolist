@@ -1,16 +1,15 @@
-import { Project, returnActive, projectsArray } from "../DATA/projects"
+import { Project, returnActive, projectsArray, changeActiveProject } from "../DATA/projects"
 import { Task } from "../DATA/tasks"
-import { updateTasks } from "./loadPage"
+import { recreateDOM, updateTasks } from "./loadPage"
 
 export const formListener = (node) => {
-    let currentProject = returnActive(projectsArray);
             node.addEventListener('submit', function(e) {
             e.preventDefault()
+            let currentProject = returnActive(projectsArray)
             let submissionValue = node.querySelector('.taskInput').value
-            console.log(submissionValue)
-                let newTask = new Task(submissionValue)
-                console.log(newTask)
-                currentProject.addTask(newTask); updateTasks()
+            let newTask = new Task(submissionValue)
+            currentProject.tasksList.push(newTask)
+            recreateDOM()
         })        
     }
 
@@ -41,5 +40,3 @@ export const addTaskBtn = () => {
         cancelBtns()
     })
 }
-
-

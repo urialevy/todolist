@@ -1,5 +1,5 @@
 import { el } from "date-fns/locale";
-import { completeProjectData, projectsArray } from "../DATA/projects";
+import { completeProjectData, loadProjectsFromLocalStorage, projectsArray, saveProjects } from "../DATA/projects";
 import { returnActive } from "../DATA/projects";
 import { changeActiveProject } from "../DATA/projects";
 import { Project, finishedProjects } from "../DATA/projects";
@@ -7,8 +7,11 @@ import { addTaskBtn } from "./addTask";
 import { finishedTasks } from "../DATA/tasks";
 
 
+
 export const recreateDOM = () => {
   document.body.innerHTML = ``
+  localStorage.setItem('projArr', JSON.stringify(projectsArray))
+  
   appendNodeToBody(framework());
   injectProjHtml(projectsArray);
   navigateProjects()
@@ -19,6 +22,7 @@ export const recreateDOM = () => {
   if (currentProject.title == null) {
     document.getElementById('mainright').innerHTML = ``;
   }
+  loadProjectsFromLocalStorage()
 }
 
 export function framework() {
@@ -49,9 +53,10 @@ export function framework() {
                 <div id="tasksContainer">
                 <div id="tasksList">
             </div></div>
+
             </div>
             </div>
-    <div id="footer"><div class="text-red-700"><p class="text-red-700">LOREM IPSUM!</p></div></div>`;
+    <div id="footer"><div><p>Created by Uria Levy for the ODIN Project</p></div></div>`;
   return divFrame;
 }
 export function appendNodeToBody(node) {
@@ -86,7 +91,7 @@ export const updateTasks = () => {
   for (let i = 0; i < currentProject.tasksList.length; i++) {
     let divNode = document.createElement("div");
     divNode.classList.add("task");
-    // divNode.id = currentProject.tasksList[i].id
+    divNode.id = currentProject.tasksList[i].id
     taskArr.push(divNode);
     taskNode.appendChild(divNode)
     taskArr[i].innerHTML = `${currentProject.tasksList[i].name} <div class="taskMan"><button class="completebtn">✔</button><button class="editbtn">🖊️</button><button class ="delbtn">🗑️</button></div>` 
@@ -153,6 +158,7 @@ export const navigateProjects = () => {
       <div id="tasksContainer">
       <div id="tasksList">
   </div>`
+      changeActiveProject(associatedProject)
       updateTasks()
       addTaskBtn()
     })
@@ -203,6 +209,7 @@ export const projBtns = () => {
     }
     else {
       projectsArray.splice(index, 1)
+    //   saveProjects(projectsArray)
       if (projectsArray.length > 0) {
         changeActiveProject(projectsArray[0])
         updateTasks()
@@ -221,7 +228,6 @@ export const projBtns = () => {
     else {
       let currentProject = returnActive(projectsArray)
       finishedProjects.push(currentProject)
-      let associatedProject = projectsArray.find(proj => proj.id === currentProject.id)
       let index = projectsArray.indexOf(currentProject)
       projectsArray.splice(index, 1)
       if (projectsArray.length > 0) {
