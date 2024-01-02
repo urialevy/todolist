@@ -12,4 +12,4 @@ import { addForm, addTaskBtn, formListener } from "./DOM/addTask";
 import { projectsArray, loadProjectsFromLocalStorage } from "./DATA/projects";
 import { projBtns } from "./DOM/loadPage";
 
-recreateDOM()
+recreateDOM();

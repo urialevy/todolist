@@ -1,8 +1,8 @@
 export class Task {
-    constructor(name) {
-        this.name = name;
-        this.id = crypto.randomUUID()
-    }
+  constructor(name) {
+    this.name = name;
+    this.id = crypto.randomUUID();
+  }
 }
 
-export const finishedTasks = []
+export const finishedTasks = [];

@@ -41,7 +41,11 @@ body {
   width: 100%;
 }
 
-#newTask, .project, #delTask, #finishTask, #addTask {
+#newTask,
+.project,
+#delTask,
+#finishTask,
+#addTask {
   margin-bottom: 2rem;
   padding: 10px 25px;
   background: transparent;
@@ -57,13 +61,16 @@ body {
   border-radius: 5%;
 }
 
-#newTask:hover, .project:hover, #delTask:hover, #finishTask:hover {
+#newTask:hover,
+.project:hover,
+#delTask:hover,
+#finishTask:hover {
   color: #113f67;
   background-color: #e7eaf6;
   border-color: #e7eaf6;
 }
 
-#addTask:hover{
+#addTask:hover {
   cursor: grab;
   background-color: #a2a8d3;
   border-color: #a2a8d3;
@@ -106,10 +113,10 @@ body {
 }
 
 #mainright {
-  padding-top: 1rem ;
+  padding-top: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content:flex-start;
+  justify-content: flex-start;
   width: 70%;
   height: 100%;
 }
@@ -147,7 +154,9 @@ body {
   margin: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
 
-.delbtn, .completebtn, .editbtn {
+.delbtn,
+.completebtn,
+.editbtn {
   color: #113f67;
   background-color: #a2a8d3;
   border-radius: 20%;
@@ -177,12 +186,10 @@ body {
   column-gap: 1rem;
 }
 
-
-
 #taskTitle {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly
+  justify-content: space-evenly;
 }
 
 #tasksContainer {
@@ -200,14 +207,13 @@ body {
   height: 80%;
 }
 
-
 .taskForm {
   display: flex;
   flex-direction: row;
   gap: 5rem;
 }
 
-.taskForm>div {
+.taskForm > div {
   display: flex;
   gap: 2rem;
 }
